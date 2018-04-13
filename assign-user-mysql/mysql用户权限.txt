@@ -1,0 +1,36 @@
+mysql创建用户，分配权限：
+update first：
+mysql_upgrade -uroot -p***
+
+then restart mysql：
+net stop mysql57
+net start mysql57
+
+then login again:
+mysql -uroot -p***
+
+create a db_example:
+create database db_example;
+
+if there already a database exist,can use it directly:
+use db_example;
+
+then assign a user and give priviliges:
+access form localhost: create user 'username'@'localhost' identified by 'pwd_of_the_user'
+access from external : create user 'username'@'host_address' identified by 'pwd_of_the_user'
+
+grant all on db_example.* from 'username'@'localhost';
+
+revoke all the priviliges:
+revoke all on db_example.* from 'username'@'host_address';
+
+re_assign priviliges:
+grant select, insert, delete, update on db_example.* to 'username'@'host_address';
+
+now we check it out:
+mysql -u uername -p 
+******
+show databases;
+use db_example;
+
+then put some sql to check priviliges on db_example... 

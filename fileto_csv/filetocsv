@@ -1,0 +1,9 @@
+    fun resultToCsv(data: List<Map<String, Any?>>): String {
+        if (data.isEmpty()) return ""
+        var lines = emptyList<String>().toMutableList()
+        val header = data.first().keys.joinToString("\",\"", "\"", "\"")
+        var content = data.map { e -> e.values.joinToString("\",\"", "\"", "\"") }
+        lines.add(header)
+        lines.addAll(content)
+        return lines.joinToString("\r\n")
+    }
