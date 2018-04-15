@@ -41,8 +41,11 @@ docker volume create httpd_vol  (这一步可以省略)
 ```bash
 docker run -d --name httpd1 -v httpd_vol:/htdocs:ro httpd-vim
 docker run -d --name httpd2 -mount type=volume,source=httpd_vol,target=/htdocs,readonly httpd-vim
+docker run -d --name httpd3 -v httpd_vol:/htdocs httpd-vim
 ```
-   **service:**
+- 这时候如果在httpd3容器中修改/htdocs中的数据，数据会同步到httpd1和httpd2中
+
+   **service:**
 ```bash
 docker service creaete -d --replicas=4 --name httpd_service --mount source=httpd_vol,target=/htdocs httpd-vim
 ```
