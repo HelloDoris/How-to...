@@ -1,4 +1,4 @@
-### tmpfs mounts：
+## tmpfs mounts：
 ##### 使用情景：
 - 不需要在主机或容器中存储数据，当产生大量临时数据时，可以保证容器运行的性能
 ##### 用法：
@@ -9,7 +9,7 @@ service只能用`--mount`，建议全用`--mount`, `tmpfs-mode`代表权限
 (--mount)docker run -d --name httpd3 -p 8883:80 --mount type=tmpfs,target=/htdocs,tmpfs-mode=1770 httpd-vim:1.0
 ```
 
-### bind mount:
+## bind mount:
 ##### 使用情景：
 - 将本机文件与docker容器共享(例如配置文件xxx.conf)
 - 在docker host的开发环境和容器之间共享代码或结构(这一点可通过dockerfile事先把所需文件打包到镜像)
@@ -24,7 +24,7 @@ service只能用`--mount`，建议全用`--mount`, `tmpfs-mode`代表权限
 ```
 `PS`:source可以是目录或文件，但一定得存在，target可以不存在，若已存在会被覆盖（参见copy-on-write）特性
 
-### volumes:
+## volumes:
 ##### 使用情景：
 - 在多个容器之间共享数据，若没有事先创建volume,会在首次启动容器或服务时自动创建volume，不建议使用匿名volume
 - 如果docker host不需要保持某种文件结构，则可以通过volume来使docker host和container runtime解耦
